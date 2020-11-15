@@ -4,31 +4,24 @@ const Home = () => {
             <h2>Welcome page</h2>
             <ul>
                 <li>
-                    First thing to do is to change your url in settings.js
+                    First of all I made the necessary changes to be able to deploy the backend and the frontend.
                 </li>
                 <li>
-                    Make sure you have a running backend that matches the url from the first step
+                    I then made an address entityclass to add some more information to the user entity and
+                    made a DTO to the address plus a facade and an endpoint to fetch from. 
+                    The facade method uses the securitycontext to get the users name and from that get the required information from the db.
+                </li>
+                <li>
+                    After that I made the call to an external server, which offers random facts about cats and dogs.
+                    As you can see under facts in the navbar.
+                </li>
+                <li>
+                    Finally a few changes to the frontend: moved some of the components around/added some new and added errorhandling to the loginpage.
                 </li>
                 <div class="lineHorizontal__container">
                     <div class="lineHorizontal"></div>
                 </div>
-                <li>
-                    To deploy the project on your droplet
-                    <ul>
-                        <li>SSH to your drop and add an empty folder in /var/www (mkdir "foldername")</li>
-                        <li>Give permission to the folder by typing (chmod -R 777 "foldername") </li>
-                        <li>Go to the projects root folder and type (npm run build)</li>
-                        <li>Still at the root of the projects folder type (scp -r ./build/* root@"IP Address":/var/www/"foldername")</li>
-                        <li>The project is now deployed :D</li>
-                    </ul>
-                </li>
-                <li>
-                    Make sure to update nginx configurations to handle multiple routes!
-                    Steps 7-9
-                </li>
-                <li>All can be found here: <a href="https://docs.google.com/document/d/1SQ1PDcd-ySpH4_YAL8tXGnsT9wFdJiBkRtcGZ3Pqq90/edit">Original Guide</a></li>
-                <li>Last step is to open backend project and change the remote server address to your own(domainname.something/tomcat/...</li>
-            </ul>
+                </ul>
         </div>
     )
 };
