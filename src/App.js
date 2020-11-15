@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import facade from "./apiFacade";
 import Menu from "./Menu";
+import Home from "./home";
 import { Link, Route, Switch } from "react-router-dom";
 
 function LogIn({ login }) {
@@ -39,25 +40,37 @@ function LoggedIn() {
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [errorMes, setErrorMes] = useState("");
 
   const logout = () => {
     facade.logout();
     setLoggedIn(false);
   };
   const login = (user, pass) => {
-    facade.login(user, pass).then((res) => setLoggedIn(true));
+    facade.login(user, pass)
+      .then((res) => {
+        setLoggedIn(true);
+      }).catch((error) => {
+        error.fullError.then((err) => {
+          setErrorMes(err.message);
+        })
+      })
   };
 
   return (
     <div>
       {!loggedIn ? (
-        <LogIn login={login} />
-      ) : (
         <div>
-          <LoggedIn />
-          <button className="button" onClick={logout}>Logout</button>
+          <Home />
+          <LogIn login={login} />
+          <p>{errorMes}</p>
         </div>
-      )}
+      ) : (
+          <div>
+            <LoggedIn />
+            <button className="button" onClick={logout}>Logout</button>
+          </div>
+        )}
     </div>
   );
 }

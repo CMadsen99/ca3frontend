@@ -2,27 +2,13 @@ import Swabi from "./swabi";
 import Jokes from "./Jokes";
 import User from "./user";
 import Home from "./home";
+import Facts from "./facts";
 import { Link, NavLink, Route, Switch } from "react-router-dom";
 
 export default function Menu() {
   return (
     <div>
-      <nav className="navbar navbar-light">
-        <ul className="header">
-          <li>
-            <NavLink exact activeClassName="active" to="/">Welcome</NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName="active" to="/user">User</NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName="active" to="/jokes">Jokes</NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName="active" to="/swabi">Swabi</NavLink>
-          </li>
-        </ul>
-      </nav>
+      <Header />
 
       <Switch>
         <Route exact path="/">
@@ -37,7 +23,34 @@ export default function Menu() {
         <Route path="/swabi">
           <Swabi />
         </Route>
+        <Route path="/facts">
+          <Facts />
+        </Route>
       </Switch>
     </div>
   );
+};
+
+function Header() {
+  return (
+    <nav className="navbar navbar-light">
+      <ul className="header">
+        <li>
+          <NavLink exact activeClassName="active" to="/">Welcome</NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/user">User</NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/jokes">Jokes</NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/swabi">Swabi</NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/facts">Facts</NavLink>
+        </li>
+      </ul>
+    </nav>
+  )
 }

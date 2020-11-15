@@ -69,6 +69,20 @@ function apiFacade() {
     );
   };
 
+  const fetchFactsData = () => {
+    const options = makeOptions("GET", true); //True add's the token
+    return fetch(URL + "/api/info/facts", options).then(
+      handleHttpErrors
+    );
+  };
+
+  const fetchAddress = () => {
+    const options = makeOptions("GET", true); //True add's the token
+    return fetch(URL + "/api/info/address", options).then(
+      handleHttpErrors
+    );
+  };
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -95,6 +109,8 @@ function apiFacade() {
     fetchSwabiData,
     fetchJokesData,
     fetchUserData,
+    fetchFactsData,
+    fetchAddress,
   };
 }
 const facade = apiFacade();
